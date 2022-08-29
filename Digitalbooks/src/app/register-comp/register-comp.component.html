@@ -1,0 +1,121 @@
+<!-- <p>login-comp works!</p> -->
+<div class="container">
+    <div style='margin-top: 8%;'>
+        <h1> Registration Form</h1>
+        <div class="container border">
+            <div class='card-body'>
+                <!-- <form #form="ngForm"> -->
+                <div class="row mt-3">
+                    <div class="form-group row">
+                        <div class='col-md-3'></div>
+                        <div class='col-md-2'>
+                            <label>User Name: </label>
+                        </div>
+                        <div class='col-md-4'>
+                            <input type="text" placeholder="Enter UserName" name="userName" [(ngModel)]="user.userName"
+                                required>
+                        </div>
+                        <div class='col-md-3'></div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="form-group row">
+                        <div class='col-md-3'></div>
+                        <div class='col-md-2'>
+                            <label>Password: </label>
+                        </div>
+                        <div class='col-md-4'>
+                            <input type="password" placeholder="Enter Password" name="userPassword"
+                                [(ngModel)]="user.password" required>
+                        </div>
+                        <div class='col-md-3'></div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="form-group row">
+                        <div class='col-md-3'></div>
+                        <div class='col-md-2'>
+                            <label>User Type: </label>
+                        </div>
+                        <div class='col-md-4'>
+                            <select style="width: 78%;" name="user" id="users" [(ngModel)]="user.user_Type">
+                                <option value="Author">Author</option>
+                                <option value="Reader">Reader</option>
+                            </select>
+                        </div>
+                        <div class='col-md-3'></div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="form-group row">
+                        <div class='col-md-3'></div>
+                        <div class='col-md-2'>
+                            <label>EmailId: </label>
+                        </div>
+                        <div class='col-md-4'>
+                            <input type="text" placeholder="Enter EmailId" name="userEmailid" [(ngModel)]="user.emailId"
+                                required>
+                        </div>
+                        <div class='col-md-3'></div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="form-group row">
+                        <div class='col-md-3'></div>
+                        <div class='col-md-2'>
+                            <label>Mobile: </label>
+                        </div>
+                        <div class='col-md-4'>
+                            <input type="text" maxlength="10" placeholder="Enter Mobile No" name="userMobileno"
+                                [(ngModel)]="user.mobile" required>
+                        </div>
+                        <div class='col-md-3'></div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="form-group row">
+                        <div class='col-md-5'></div>
+                        <div class='col-md-4'>
+                            <button style="width: 30%;" class="btn btn-primary" (click)="AddUser()"> Register
+                                <!-- {{showIcon? "Hide" : "Show" }} Book Images -->
+                            </button>
+                        </div>
+                        <div class='col-md-3'></div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="form-group row">
+                        <div class='col-md-5'></div>
+                        <div class="col-md-5">
+                            <p>Already have an account? <a [routerLink]="['/login']">Login</a>.</p>
+                        </div>
+                        <div class='col-md-3'></div>
+                    </div>
+                </div>
+                <!-- <div>
+                <p class="msg_success"></p>
+              </div> -->
+                <div class="row" *ngIf="showSuccMsg">
+                    <div class="col-xs-12">
+                        <p class="alert alert-success">
+                            <strong>User Registered Successfull!</strong>
+                        </p>
+                    </div>
+                </div>
+                <!-- <div class="row"  *ngIf="!showSuccMsg">
+                <div class="col-xs-12">
+                  <p class="alert alert-failed">
+                      <strong>Login Failed!</strong>
+                  </p>
+                </div>
+              </div> -->
+                <!-- </form> -->
+            </div>
+        </div>
+    </div>
+</div>

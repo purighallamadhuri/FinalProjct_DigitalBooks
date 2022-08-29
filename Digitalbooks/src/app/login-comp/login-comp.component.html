@@ -1,0 +1,57 @@
+<!-- <p>login-comp works!</p> -->
+<div class="container">
+  <div style='margin-top: 8%;'>
+    <h1> Login Form</h1>
+    <div class="container border">
+      <div class='card-body'>
+
+        <div class="row mt-3">
+          <div class="form-group row">
+            <div class='col-md-3'></div>
+            <div class='col-md-2'>
+              <label>User Name: </label>
+            </div>
+            <div class='col-md-4'>
+              <input type="text" placeholder="Enter UserName" name="userName" [(ngModel)]="loggedinuser.UserName"
+                required>
+            </div>
+            <div class='col-md-3'></div>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="form-group row">
+            <div class='col-md-3'></div>
+            <div class='col-md-2'>
+              <label>Password: </label>
+            </div>
+            <div class='col-md-4'>
+              <input type="password" placeholder="Enter Password" name="userPassword"
+                [(ngModel)]="loggedinuser.Password" required>
+            </div>
+            <div class='col-md-3'></div>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="form-group row">
+            <div class='col-md-5'></div>
+            <div class='col-md-4'>
+              <button style="width: 30%;" class="btn btn-primary" (click)="onSubmit()"> Login
+                <!-- {{showIcon? "Hide" : "Show" }} Book Images -->
+              </button>
+            </div>
+            <div class='col-md-3'></div>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="form-group row">
+            <div class='col-md-5'></div>
+            <div class="col-md-5">
+              <p>New User? <a [routerLink]="['/register']">Register</a>.</p>
+            </div>
+            <div class='col-md-3'></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

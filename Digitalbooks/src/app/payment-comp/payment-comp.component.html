@@ -1,0 +1,147 @@
+<div class="container"><br />
+  <div style='margin-top: 8%;'>
+    <div class="row mt-3">
+      <div class="form-group row">
+        <div class='col-md-6'>
+          <h1>Payments History</h1>
+        </div>
+        <div class='col-md-5'> </div>
+        <div class='col-md-1'>
+          <button style="width: 90%;" [routerLink]="['/reader']" class="btn btn-primary"> Back
+            <!-- {{showIcon? "Hide" : "Show" }} Book Images -->
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="form-group row">
+          <div class='col-md-4'></div>
+          <div class='col-md-2'>
+              <label for="bookpublisher">Email Id: </label>
+          </div>
+          <div class='col-md-5'>
+              <input *ngIf="showEmailField" [disabled]="true" type="text"  style="width: 60%;" placeholder="Enter EmailId" name="userEmailid"
+                  [(ngModel)]="userEmailId" required>
+                  <input *ngIf="emptyshowEmailField" type="text"  style="width: 60%;" placeholder="Enter EmailId" name="userEmailid"
+                  [(ngModel)]="userEmailId" required>
+          </div>
+          <div class='col-md-2'></div>
+      </div>
+  </div>
+  <div class="row mt-3">
+    <div class="form-group row">
+      <div class='col-md-5'></div>
+      <div class='col-md-4'>
+        <button style="width: 25%;" class="btn btn-primary" (click)="ShowPayments()"> Submit
+          <!-- {{showIcon? "Hide" : "Show" }} Book Images -->
+        </button>
+      </div>
+      <div class='col-md-3'></div>
+    </div>
+  </div>
+  &nbsp;
+
+    <div *ngIf="showGrid" class="container border">
+
+      <div class="table-responsive">
+
+        <table class="table" *ngIf="payDetails.length">
+          <thead class="table-dark">
+            <tr>
+              <th> Book Title </th>
+              <th> Email Id </th>
+              <th> Payment Date </th>
+              <th> Payment Mode </th>
+              <th> Actions </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let payment of payDetails">
+              <td>{{payment.bookName}}</td>
+              <td>{{payment.emailId}}</td>
+              <td>{{payment.payment_Date}}</td>
+              <td>{{payment.payment_Mode}}</td>
+              <td>
+                <button class="btn btn-primary" (click) = "OpenContent(payment)">View</button> &nbsp;
+                <button class="btn btn-primary" (click)="Refund(payment)">Refund</button> &nbsp;
+                <button class="btn btn-primary" (click)="openModal(template,payment)">Invoice</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <ng-template #template>
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Payment Invoice</h4>
+        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+          <span aria-hidden="true" class="visually-hidden">
+
+          </span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card">
+          <div class="card-header bg-black"></div>
+          <div class="card-body">
+
+            <div class="container">
+              <div class="row">
+              </div>
+              <div class="row">
+                <div class="col-xl-12">
+
+                  <div class="row text-center">
+                    <h3 class="text-uppercase text-center mt-3" style="color: red;">Digital Books</h3>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row text-center">
+                <h4 class="text-uppercase text-center mt-3 font-size: 30px; " style="font-size: 40px;">Invoice</h4>
+                <p>Order Id: {{paymentDetails.payment_Id}}</p>
+              </div>
+
+              <div class="row mx-3">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Book Title</th>
+                      <th scope="col">Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{{paymentDetails.bookName}}</td>
+                      <td><i class="fas fa-dollar-sign"></i> {{paymentDetails.price}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+              <div class="row">
+                <div class="col-xl-8">
+                  <ul class="list-unstyled float-end me-0">
+                    <li><span class="me-3 float-start">Total Amount:</span><i class="fas fa-dollar-sign"></i>
+                      {{paymentDetails.price}}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <hr>
+              <div class="row mt-2 mb-5">
+                <p class="fw-bold">Date: <span class="text-muted">{{paymentDetails.payment_Date}}</span></p>
+              </div>
+
+            </div>
+
+
+
+          </div>
+          <div class="card-footer bg-black"></div>
+        </div>
+      </div>
+    </ng-template>
+
+  </div>
+</div>
